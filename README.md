@@ -17,12 +17,10 @@ This is the implementation of the method proposed in "Image Tampering Localizati
 - demo.py
 # How to run
 ## Test with the trained model
-'''
+
 python3 demo --filename test.py
-'''
+
 ## Train the model from scratch
-'''
 python3 demo --filename train.py
-'''
 
 
