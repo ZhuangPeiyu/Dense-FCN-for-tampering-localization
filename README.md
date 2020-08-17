@@ -3,7 +3,7 @@
 # Overview
 This is the implementation of the method proposed in "Image Tampering Localization Using a Dense Fully Convolutional Network" with tensorflow(1.10.0, gpu version). The aim of this repository is to achieve image tampering localization.
 # Network Architecture
-
+![image](https://github.com/ZhuangPeiyu/Dense-FCN-for-tampering-localization/blob/master/networkArchitecture/2b0a15a5365a05701a7be16b7369494.png)
 # Files structure of Dense-FCN-for-tampering-localization
 - Models
 - Results
