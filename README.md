@@ -13,6 +13,9 @@ This is the implementation of the method proposed in "Image Tampering Localizati
 - denseFCN.py
 - test.py
 - demo.py
+
+# The pre-trained model path
+The model trained with Dresden script dataset and fine-tuned with 56 NIST images was uploaded in Dropbox: https://www.dropbox.com/sh/0hkeenrfazob3ci/AAAa6X2hhDnj04LfAR2mSKi9a?dl=0
 # How to run
 ## Test with the trained model
 
