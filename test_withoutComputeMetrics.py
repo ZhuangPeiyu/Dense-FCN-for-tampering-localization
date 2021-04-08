@@ -88,8 +88,7 @@ LOSS = {
 
 
 def model(images, weight_decay, is_training, num_classes=2):
-	return denseFCN.denseFCN(images, is_training)
-	# return denseFCN.denseFCN_highpass30(images,is_training)
+	return denseFCN.denseFCN(images, is_training,weight_decay,num_classes)
 
 def read_image(image_path, mask_path, image_index):
 	imgs = os.listdir(image_path)
