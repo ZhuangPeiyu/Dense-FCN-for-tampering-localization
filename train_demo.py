@@ -37,7 +37,7 @@ tf.flags.DEFINE_string('img_size', None, 'size of input image')
 tf.flags.DEFINE_bool('img_aug', None, 'apply image augmentation')
 tf.flags.DEFINE_string('mode', 'train', 'Mode: train / test / visual')
 tf.flags.DEFINE_integer('epoch', 50, 'No. of epoch to run')
-tf.flags.DEFINE_float('train_ratio', 0.001, 'Trainning ratio')
+tf.flags.DEFINE_float('train_ratio', 1.0, 'Trainning ratio')
 tf.flags.DEFINE_string('restore', '', 'Explicitly restore checkpoint')
 
 tf.flags.DEFINE_bool('reset_global_step', True, 'Reset global step')
@@ -138,7 +138,7 @@ def main(argv=None):
 	if FLAGS.mode == 'train':
 		dataset_trn = dataset.take(int(np.ceil(instance_num * FLAGS.train_ratio))).shuffle(buffer_size=10000).map(
 			map_func).batch(FLAGS.batch_size).repeat()
-		dataset_vld = dataset2.take(int(np.ceil(instance_num2 * FLAGS.train_ratio))).map(map_func).batch(1)
+		dataset_vld = dataset2.take(int(np.ceil(instance_num2 * FLAGS.train_ratio))).map(map_func).batch(FLAGS.batch_size)
 		iterator_trn = dataset_trn.make_one_shot_iterator()
 		iterator_vld = dataset_vld.make_initializable_iterator()
 
@@ -281,15 +281,19 @@ def main(argv=None):
 					except tf.errors.OutOfRangeError:
 						break
 				mean_loss_, mean_accuracy_, summary_str = sess.run([mean_loss, mean_accuracy, summary_op])
-				saver.save(sess, '{}/model.ckpt-{:g}-{:g}'.format(FLAGS.logdir, np.mean(F1), np.mean(AUC)),
-				           int(step / itr_per_epoch))
+
 				if np.mean(F1) > best_metric:
 					best_metric = np.mean(F1)
+					saver.save(sess, '{}/model.ckpt-{:g}-{:g}'.format(FLAGS.logdir, np.mean(F1), np.mean(AUC)),
+					           int(step / itr_per_epoch))
 				if np.mean(AUC) > best_auc_metric:
 					best_auc_metric = np.mean(AUC)
+					saver.save(sess, '{}/model.ckpt-{:g}-{:g}'.format(FLAGS.logdir, np.mean(F1), np.mean(AUC)),
+					           int(step / itr_per_epoch))
 				if mean_loss_ < best_val_loss:
 					best_val_loss = mean_loss_
-
+					saver.save(sess, '{}/model.ckpt-{:g}-{:g}'.format(FLAGS.logdir, np.mean(F1), np.mean(AUC)),
+					           int(step / itr_per_epoch))
 					loss_decrease = 0
 				else:
 					loss_decrease += 1
