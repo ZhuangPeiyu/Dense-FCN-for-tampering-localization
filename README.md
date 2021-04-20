@@ -19,10 +19,10 @@ The model trained with Dresden script dataset and fine-tuned with 56 NIST images
 # How to run
 ## Test with the trained model
 
-python3 demo --filename test.py
+python3 test_withoutComputeMetrics.py
 
 ## Train the model from scratch
-python3 demo --filename train.py
+python3 train_demo.py
 
 # Citation
 If you use our code please cite: 
