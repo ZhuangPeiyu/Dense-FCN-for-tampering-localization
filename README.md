@@ -26,6 +26,7 @@ python3 demo --filename train.py
 
 # Citation
 If you use our code please cite: 
+
 @ARTICLE{9393396,  author={P. {Zhuang} and H. {Li} and S. {Tan} and B. {Li} and J. {Huang}},  
 journal={IEEE Transactions on Information Forensics and Security},   
 title={Image Tampering Localization Using a Dense Fully Convolutional Network},   
