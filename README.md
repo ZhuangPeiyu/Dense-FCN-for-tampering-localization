@@ -25,5 +25,13 @@ python3 demo --filename test.py
 python3 demo --filename train.py
 
 # Citation
-If you use our code please cite: Peiyu Zhuang, Haodong Li, Shunquan Tan, Bin Li, Jiwu Huang, "Image Tampering Localization Using a Dense Fully Convolutional Network," submitted to IEEE Transactions on Information Forensics and Security, 2020.
+If you use our code please cite: 
+@ARTICLE{9393396,  author={P. {Zhuang} and H. {Li} and S. {Tan} and B. {Li} and J. {Huang}},  
+journal={IEEE Transactions on Information Forensics and Security},   
+title={Image Tampering Localization Using a Dense Fully Convolutional Network},   
+year={2021},  
+volume={16},  
+number={},  
+pages={2986-2999},  
+doi={10.1109/TIFS.2021.3070444}}
 
